@@ -4,14 +4,13 @@ from django.shortcuts import get_object_or_404
 
 
 nav_data = [
-    {"name": "Store", "url": "products/"},
-    {"name": "Mac", "url": "mac/"},
-    {"name": "iPad", "url": "ipad/"},
-    {"name": "iPhone", "url": "iphone/"},
-    {"name": "Watch", "url": "watch/"},
-    {"name": "Vision", "url": "vision/"},
-    {"name": "AirPods", "url": "airpods/"},
-    {"name": "Tv & Home", "url": "tv_home/"},
+    {"name": "Все продукты", "url": "products/"},
+    {"name": "Телефоны", "url": "phone/"},
+    {"name": "Планшеты", "url": "tablet/"},
+    {"name": "Ноутбуки", "url": "laptop/"},
+    {"name": "Часы", "url": "watch/"},
+    {"name": "Наушники", "url": "headphones/"},
+    {"name": "Телевизоры", "url": "tv/"},
 ]
 
 

@@ -9,13 +9,15 @@
 		{% for item in items %}
 			<li class="products-item">
 				{% if item.image %}
-				<img class="image" src="{{ item.image.url }}" alt="iphone 14 pro max">
+				<div class="wrapper-image">
+					<img class="product-image" src="{{ item.image.url }}" alt="iphone 14 pro max">
+				</div>
 				{% endif %}
 				<a href="{{ item.get_absolute_url }}">
-					<h2>{{ item.title }}</h2>
+					<h2 class="product-title">{{ item.title }}</h2>
 				</a>
-				<p><b>{{ item.price }}</b> $</p>
-				<p>{{ item.description }}</p>
+				<p class="product-price"><b>{{ item.price }}</b> $</p>
+				<p class="product-desc">{{ item.description|truncatechars:210 }}</p>
 			</li>
 		{% endfor %}
 		</ul>

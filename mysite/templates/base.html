@@ -5,6 +5,9 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="{% static "myapp/css/style.css" %}">
 	<title>Home Page</title>
 </head>
@@ -12,19 +15,35 @@
 	<div class="wrapper">
 	<header class="header">
 		<div class="logo-wrapper">
-			<img class="logo-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/1667px-Apple_logo_black.svg.png" alt="logo">
+			<a href="#">
+				<img class="logo-img" src="{% static "myapp/images/logo.svg" %}" alt="logo">
+			</a>
 		</div>
 		<nav class="nav-bar">
 			<ul class="nav-list">
 				{% for item in nav_data %}
 				<li>
-					<a class="nav-item" href="{{ item.url }}">
+					<a class="nav-item" href="">
 						{{ item.name }}
 					</a>
 				</li>
 				{% endfor %}
 			</ul>
 		</nav>
+		<div>
+			<ul>
+				<li>
+					<a class="nav-item" href="#">
+						Войти
+					</a>
+				</li>
+				<li>
+					<a class="nav-item" href="#">
+						Корзина
+					</a>
+				</li>
+			</ul>
+		</div>
 	</header>
 </div>
 	{% block content %}{% endblock %}

@@ -20,7 +20,7 @@ class Product(models.Model):
         verbose_name="URL",
     )
     cat = models.ForeignKey(
-        to="Category", on_delete=models.PROTECT, null=True, verbose_name="Категория"
+        to="Category", on_delete=models.SET_NULL, null=True, verbose_name="Категория"
     )
 
     def get_absolute_url(self):
@@ -31,8 +31,8 @@ class Product(models.Model):
 
 
 class Category(models.Model):
-    title = models.CharField(max_length=100)
-    slug = models.SlugField(max_length=255, unique=True)
+    title = models.CharField(max_length=100, verbose_name="Название")
+    slug = models.SlugField(max_length=255, unique=True, verbose_name="URL")
 
     def __str__(self):
         return self.title

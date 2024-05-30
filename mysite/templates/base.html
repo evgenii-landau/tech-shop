@@ -1,0 +1,32 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="{% static "myapp/css/style.css" %}">
+	<title>Home Page</title>
+</head>
+<body>
+	<div class="wrapper">
+	<header class="header">
+		<div class="logo-wrapper">
+			<img class="logo-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/1667px-Apple_logo_black.svg.png" alt="logo">
+		</div>
+		<nav class="nav-bar">
+			<ul class="nav-list">
+				{% for item in nav_data %}
+				<li>
+					<a class="nav-item" href="{{ item.url }}">
+						{{ item.name }}
+					</a>
+				</li>
+				{% endfor %}
+			</ul>
+		</nav>
+	</header>
+</div>
+	{% block content %}{% endblock %}
+</body>
+</html>

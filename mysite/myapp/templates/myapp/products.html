@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="wrapper">
+	<div class="list-wrapper">
+		<h1 class="title">{{ title }}</h1>
+		<ul class="products-list" style="list-style: none">
+		{% for item in items %}
+			<li class="products-item">
+				<img class="image" src="https://www.apple.com/newsroom/images/product/iphone/standard/Apple-iPhone-14-Pro-iPhone-14-Pro-Max-gold-220907_inline.jpg.large.jpg" alt="iphone 14 pro max">
+				<a href="{{ item.get_absolute_url }}">
+					<h2>{{ item.title }}</h2>
+				</a>
+				<p><b>{{ item.price }}</b> $</p>
+				<p>{{ item.description }}</p>
+			</li>
+		{% endfor %}
+		</ul>
+	</div>
+</div>
+{% endblock  %}

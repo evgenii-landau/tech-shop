@@ -9,6 +9,9 @@ class Product(models.Model):
     time_create = models.DateTimeField(auto_now_add=True, verbose_name="Дата создания")
     time_update = models.DateTimeField(auto_now=True, verbose_name="Дата изменения")
     is_published = models.BooleanField(default=True, verbose_name="Опубликованно")
+    image = models.ImageField(
+        upload_to="images/", blank=True, verbose_name="Изображение"
+    )
     slug = models.SlugField(
         max_length=255,
         db_index=True,

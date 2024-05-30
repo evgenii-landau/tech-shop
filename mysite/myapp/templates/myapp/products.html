@@ -8,7 +8,9 @@
 		<ul class="products-list" style="list-style: none">
 		{% for item in items %}
 			<li class="products-item">
-				<img class="image" src="https://www.apple.com/newsroom/images/product/iphone/standard/Apple-iPhone-14-Pro-iPhone-14-Pro-Max-gold-220907_inline.jpg.large.jpg" alt="iphone 14 pro max">
+				{% if item.image %}
+				<img class="image" src="{{ item.image.url }}" alt="iphone 14 pro max">
+				{% endif %}
 				<a href="{{ item.get_absolute_url }}">
 					<h2>{{ item.title }}</h2>
 				</a>

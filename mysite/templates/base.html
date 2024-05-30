@@ -21,10 +21,10 @@
 		</div>
 		<nav class="nav-bar">
 			<ul class="nav-list">
-				{% for item in nav_data %}
+				{% for category in categories %}
 				<li>
-					<a class="nav-item" href="">
-						{{ item.name }}
+					<a class="nav-item" href="{{ category.get_absolute_url }}">
+						{{ category.title }}
 					</a>
 				</li>
 				{% endfor %}

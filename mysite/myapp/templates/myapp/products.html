@@ -1,26 +1,21 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block content %}
-<div class="wrapper">
-	<div class="list-wrapper">
-		<h1 class="title">{{ categories.title }}</h1>
-		<ul class="products-list" style="list-style: none">
-		{% for item in items %}
-			<li class="products-item">
-				{% if item.image %}
-				<div class="wrapper-image">
-					<img class="product-image" src="{{ item.image.url }}" alt="iphone 14 pro max">
-				</div>
-				{% endif %}
-				<a href="{{ item.get_absolute_url }}">
-					<h2 class="product-title">{{ item.title }}</h2>
-				</a>
-				<p class="product-price"><b>{{ item.price }}</b> $</p>
-				<p class="product-desc">{{ item.description|truncatechars:210 }}</p>
-			</li>
-		{% endfor %}
-		</ul>
-	</div>
-</div>
+{% block content-list %}
+<ul class="products-list" style="list-style: none">
+{% for item in items %}
+	<li class="products-item">
+		{% if item.image %}
+		<div class="wrapper-image">
+			<img class="product-image" src="{{ item.image.url }}" alt="iphone 14 pro max">
+		</div>
+		{% endif %}
+		<a href="{{ item.get_absolute_url }}">
+			<h2 class="product-title">{{ item.title }}</h2>
+		</a>
+		<p class="product-price"><b>{{ item.price }}</b> $</p>
+		<p class="product-desc">{{ item.description|truncatechars:210 }}</p>
+	</li>
+{% endfor %}
+</ul>
 {% endblock  %}

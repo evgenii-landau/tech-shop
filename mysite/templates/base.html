@@ -19,7 +19,30 @@
 				<img class="logo-img" src="{% static "myapp/images/logo.svg" %}" alt="logo">
 			</a>
 		</div>
-		<nav class="nav-bar">
+
+		<div class="theme-popup">
+			<input type="radio" name="theme" id="default" checked="">
+			<input type="radio" name="theme" id="light">
+			<input type="radio" name="theme" id="dark">
+			<input type="checkbox" id="checkbox">
+			<label for="checkbox" class="theme-popup__button">
+			Все категории
+			</label>
+			<div class="theme-popup__list-container">
+
+				<ul class="theme-popup__list">
+					{% for category in categories %}
+					<li>
+						<a class="nav-item" href="{{ category.get_absolute_url }}">
+							{{ category.title }}
+						</a>
+					</li>
+					{% endfor %}
+				</ul>
+			</div>
+		</div>
+
+		{% comment %} <nav class="nav-bar">
 			<ul class="nav-list">
 				{% for category in categories %}
 				<li>
@@ -29,7 +52,15 @@
 				</li>
 				{% endfor %}
 			</ul>
-		</nav>
+		</nav> {% endcomment %}
+		
+		<div class="form-wrapper" method="get">
+			<form action="{% url "myapp:search" %}" class="search-form">
+				<input type="search" name="search" placeholder="Искать здесь...">
+				<button type="submit"></button>
+			</form>
+		</div>
+
 		<div>
 			<ul>
 				<li>
@@ -46,6 +77,8 @@
 		</div>
 	</header>
 </div>
-	{% block content %}{% endblock %}
+<div class="list-wrapper">
+	{% block content-list %}{% endblock %}
+</div>
 </body>
 </html>

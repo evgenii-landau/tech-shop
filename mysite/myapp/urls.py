@@ -1,10 +1,11 @@
 from django.urls import path
-from myapp.views import index, category , get_product
+from myapp.views import TechHome, TechCategory, ShowProduct
 
 app_name = "myapp"
 
 urlpatterns = [
-	path("", index, name="home"),
-    path("<slug:category_slug>/", category, name="category"),
-    path("products/<slug:product_slug>/", get_product, name="product"),
+    path("", TechHome.as_view(), name="home"),
+    path("search/", TechCategory.as_view(), name="search"),
+    path("<slug:category_slug>/", TechCategory.as_view(), name="category"),
+    path("product/<slug:product_slug>/", ShowProduct.as_view(), name="product"),
 ]

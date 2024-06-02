@@ -29,13 +29,21 @@ class Product(models.Model):
     def __str__(self):
         return self.title
 
+    class Meta:
+        verbose_name = "Товар"
+        verbose_name_plural = "Товары"
+
 
 class Category(models.Model):
     title = models.CharField(max_length=100, verbose_name="Название")
     slug = models.SlugField(max_length=255, unique=True, verbose_name="URL")
-    
+
     def get_absolute_url(self):
         return reverse("myapp:category", kwargs={"category_slug": self.slug})
-	
+
     def __str__(self):
         return self.title
+
+    class Meta:
+        verbose_name = "Категория"
+        verbose_name_plural = "Категории"

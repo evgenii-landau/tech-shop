@@ -1,5 +1,4 @@
 from django.db.models.base import Model as Model
-from django.db.models.query import QuerySet
 from .models import Product, Category
 from django.shortcuts import get_object_or_404, get_list_or_404
 from django.views.generic import (
@@ -8,7 +7,7 @@ from django.views.generic import (
     DetailView,
     CreateView,
     UpdateView,
-    DetailView,
+    DeleteView,
 )
 from .utils import DataMixin
 from django.db.models import Q
@@ -18,6 +17,8 @@ from django.urls import reverse_lazy
 
 
 class TechHome(DataMixin, TemplateView):
+    """Главная страница"""
+
     template_name = "myapp/index.html"
 
     def get_context_data(self, **kwargs):
@@ -26,6 +27,8 @@ class TechHome(DataMixin, TemplateView):
 
 
 class TechCategory(DataMixin, ListView):
+    """Просмотр категории"""
+
     template_name = "myapp/products.html"
     context_object_name = "items"
 
@@ -47,6 +50,8 @@ class TechCategory(DataMixin, ListView):
 
 
 class ShowProduct(DataMixin, DetailView):
+    """Просмотр продукта"""
+
     model = Product
     template_name = "myapp/product_item.html"
     context_object_name = "item"
@@ -61,12 +66,16 @@ class ShowProduct(DataMixin, DetailView):
 
 
 class addProduct(CreateView):
+    """Добавление продукта"""
+
     form_class = addProductForm
     template_name = "myapp/add_product.html"
     extra_context = {"categories": Category.objects.all()}
 
 
 class UpdateProduct(UpdateView):
+    """Редактирование продукта"""
+
     model = Product
     fields = ["title", "description", "price", "cat"]
     success_url = reverse_lazy("myapp:home")
@@ -74,6 +83,10 @@ class UpdateProduct(UpdateView):
     extra_context = {"categories": Category.objects.all()}
 
 
-# class DeleteProduct(DetailView):
-#     model = Product
-#     success_url = reverse_lazy("myapp:home")
+class DeleteProduct(DeleteView):
+    """Удаление продукта"""
+
+    model = Product
+    success_url = reverse_lazy("myapp:home")
+
+

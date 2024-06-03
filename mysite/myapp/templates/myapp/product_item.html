@@ -12,8 +12,15 @@
 	</a>
 	<p class="product-price"><b>{{ item.price }}</b> $</p>
 	<p class="product-desc">{{ item.description }}</p>
-	<a href="{% url "myapp:updatePage" item.slug %}">
-		<button class="change-button" type="button">Изменить</button>
-	</a>
+	<div class="buttons-wrapper">
+		<form action="{% url 'myapp:updatePage' item.slug %}" method="post">
+			{% csrf_token %}
+			<input class="change-button" type="submit" value="Изменить">
+		</form>
+		<form action="{% url 'myapp:deletePage' item.slug %}" method="post">
+			{% csrf_token %}
+			<input class="change-button" type="submit" value="Удалить"/>
+		</form>
+	</div>
 </div>
 {% endblock  %}

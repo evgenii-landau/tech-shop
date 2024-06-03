@@ -99,6 +99,25 @@ body {
 	background-color: navajowhite;
 }
 
+.product-item {
+	max-width: 800px;
+	padding: 20px;
+	border-radius: 20px;
+	border: 2px solid black;
+}
+
+.change-button {
+	margin-top: 20px;
+	border: 1px solid black;
+	padding: 10px 20px;
+	border-radius: 5px;
+	background: bisque;
+}
+
+.change-button:hover {
+	background: khaki;
+}
+
 .product-title {
 	font-size: 20px;
 	margin: 20px 0 20px 0;
@@ -246,177 +265,156 @@ body {
 
 /* Конец поиска */
 
-.search-form {
-	position: relative;
-	width: 300px;
-	margin: 0 auto;
-}
-.form-wrapper {
-	background: #a3d0c3;
-	margin-bottom: 20px;
-}
-.form-wrapper input {
-	width: 100%;
-	height: 42px;
-	padding-left: 10px;
-	border: 2px solid #7ba7ab;
-	border-radius: 5px;
-	outline: none;
-	background: #f9f0da;
-	color: #9e9c9c;
-}
-.form-wrapper button {
-	position: absolute;
-	top: 0;
-	right: 0px;
-	width: 42px;
-	height: 42px;
-	border: none;
-	background: #7ba7ab;
-	border-radius: 0 5px 5px 0;
-	cursor: pointer;
-}
-.form-wrapper button:before {
-	content: "\f002";
-	font-family: FontAwesome;
-	font-size: 16px;
-	color: #f9f0da;
-}
+/* from add_product */
 
-/* form add_product */
-
-.form {
+.form-add-product {
+	background-color: azure;
+	padding: 30px;
+	width: 500px;
+	border-radius: 20px;
 	display: flex;
 	flex-direction: column;
-	gap: 10px;
-	max-width: 350px;
-	background-color: #fff;
-	padding: 20px;
-	border-radius: 20px;
+	gap: 20px;
+}
+
+.form__group {
 	position: relative;
-}
-
-.title {
-	font-size: 28px;
-	color: royalblue;
-	font-weight: 600;
-	letter-spacing: -1px;
-	position: relative;
-	display: flex;
-	align-items: center;
-	padding-left: 30px;
-}
-
-.title::before,
-.title::after {
-	position: absolute;
-	content: "";
-	height: 16px;
-	width: 16px;
-	border-radius: 50%;
-	left: 0px;
-	background-color: royalblue;
-}
-
-.title::before {
-	width: 18px;
-	height: 18px;
-	background-color: royalblue;
-}
-
-.title::after {
-	width: 18px;
-	height: 18px;
-	animation: pulse 1s linear infinite;
-}
-
-.message,
-.signin {
-	color: rgba(88, 87, 87, 0.822);
-	font-size: 14px;
-}
-
-.signin {
-	text-align: center;
-}
-
-.signin a {
-	color: royalblue;
-}
-
-.signin a:hover {
-	text-decoration: underline royalblue;
-}
-
-.flex {
-	display: flex;
+	padding: 20px 0 0;
 	width: 100%;
-	gap: 6px;
 }
 
-.form label {
-	position: relative;
-}
-
-.form label .input {
+.form__field {
+	font-family: inherit;
 	width: 100%;
-	padding: 10px 10px 20px 10px;
-	outline: 0;
-	border: 1px solid rgba(105, 105, 105, 0.397);
-	border-radius: 10px;
-}
-
-.form label .input + span {
-	position: absolute;
-	left: 10px;
-	top: 15px;
-	color: grey;
-	font-size: 0.9em;
-	cursor: text;
-	transition: 0.3s ease;
-}
-
-.form label .input:placeholder-shown + span {
-	top: 15px;
-	font-size: 0.9em;
-}
-
-.form label .input:focus + span,
-.form label .input:valid + span {
-	top: 30px;
-	font-size: 0.7em;
-	font-weight: 600;
-}
-
-.form label .input:valid + span {
-	color: green;
-}
-
-.submit {
 	border: none;
-	outline: none;
-	background-color: royalblue;
-	padding: 10px;
-	border-radius: 10px;
+	border-bottom: 2px solid #9b9b9b;
+	outline: 0;
+	font-size: 17px;
+	color: #38caef;
+	padding: 10px 0;
+	background: transparent;
+	transition: border-color 0.2s;
+}
+
+.form__field::placeholder {
+	color: transparent;
+}
+
+.form__field:placeholder-shown ~ .form__label {
+	font-size: 17px;
+	cursor: text;
+	top: 20px;
+}
+
+.form__label {
+	position: absolute;
+	top: 0;
+	display: block;
+	transition: 0.2s;
+	font-size: 17px;
+	color: #116399;
+	pointer-events: none;
+}
+
+.form__field:focus {
+	padding-bottom: 6px;
+	font-weight: 700;
+	border-width: 3px;
+	border-image: linear-gradient(to right, #116399, #38caef);
+	border-image-slice: 1;
+}
+
+.form__field:focus ~ .form__label {
+	position: absolute;
+	top: 0;
+	display: block;
+	transition: 0.2s;
+	font-size: 17px;
+	color: #38caef;
+	font-weight: 700;
+}
+
+/* reset input */
+.form__field:required,
+.form__field:invalid {
+	box-shadow: none;
+}
+
+/* end from add_product */
+
+/* button form */
+
+button-add-product {
+	position: relative;
+	padding: 10px 20px;
+	border-radius: 7px;
+	border: 1px solid rgb(61, 106, 255);
+	font-size: 14px;
+	text-transform: uppercase;
+	font-weight: 600;
+	letter-spacing: 2px;
+	background-color: cornflowerblue;
 	color: #fff;
-	font-size: 16px;
-	transform: 0.3s ease;
+	overflow: hidden;
+	box-shadow: 0 0 0 0 transparent;
+	-webkit-transition: all 0.2s ease-in;
+	-moz-transition: all 0.2s ease-in;
+	transition: all 0.2s ease-in;
 }
 
-.submit:hover {
-	background-color: rgb(56, 90, 194);
+button-add-product:hover {
+	background: rgb(61, 106, 255);
+	box-shadow: 0 0 30px 5px rgba(0, 142, 236, 0.815);
+	-webkit-transition: all 0.2s ease-out;
+	-moz-transition: all 0.2s ease-out;
+	transition: all 0.2s ease-out;
 }
 
-@keyframes pulse {
+button-add-product:hover::before {
+	-webkit-animation: sh02 0.5s 0s linear;
+	-moz-animation: sh02 0.5s 0s linear;
+	animation: sh02 0.5s 0s linear;
+}
+
+button-add-product::before {
+	content: "";
+	display: block;
+	width: 0px;
+	height: 86%;
+	position: absolute;
+	top: 7%;
+	left: 0%;
+	opacity: 0;
+	background: #fff;
+	box-shadow: 0 0 50px 30px #fff;
+	-webkit-transform: skewX(-20deg);
+	-moz-transform: skewX(-20deg);
+	-ms-transform: skewX(-20deg);
+	-o-transform: skewX(-20deg);
+	transform: skewX(-20deg);
+}
+
+@keyframes sh02 {
 	from {
-		transform: scale(0.9);
+		opacity: 0;
+		left: 0%;
+	}
+
+	50% {
 		opacity: 1;
 	}
 
 	to {
-		transform: scale(1.8);
 		opacity: 0;
+		left: 100%;
 	}
 }
 
-/* end from add_product */
+button-add-product:active {
+	box-shadow: 0 0 0 0 transparent;
+	-webkit-transition: box-shadow 0.2s ease-in;
+	-moz-transition: box-shadow 0.2s ease-in;
+	transition: box-shadow 0.2s ease-in;
+}
+
+/* end button form */

@@ -1,5 +1,5 @@
 from django.urls import path
-from myapp.views import TechHome, TechCategory, ShowProduct, addPage
+from myapp.views import TechHome, TechCategory, ShowProduct, addProduct, UpdateProduct
 
 app_name = "myapp"
 
@@ -7,6 +7,7 @@ urlpatterns = [
     path("", TechHome.as_view(), name="home"),
     path("search/", TechCategory.as_view(), name="search"),
     path("<slug:category_slug>/", TechCategory.as_view(), name="category"),
-    path("product/add_product/", addPage, name="addPage"),
+    path("product/add_product/", addProduct.as_view(), name="addPage"),
     path("product/<slug:product_slug>/", ShowProduct.as_view(), name="product"),
+	path("product/<slug:slug>/update/", UpdateProduct.as_view(), name="updatePage")
 ]

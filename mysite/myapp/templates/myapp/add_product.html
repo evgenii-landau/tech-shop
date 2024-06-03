@@ -2,13 +2,13 @@
 
 {% block content %}
 
-<form action="" class="from" method="post">
+<form action="" class="form-add-product" method="post" enctype="multipart/form-data">
 	{% csrf_token %}
 	<div>{{ form.non_field_form }}</div>
 	{% for f in form %}
-	<p><label for="{{ f.id_for_label }}">{{ f.label }}</label>{{ f }}</p>
+	<div class="form__group field"><label class="form__label" for="{{ f.id_for_label }}">{{ f.label }}</label>{{ f }}</div>
 	{% endfor %}
-	<p><button type="submit">Отправить</button></p>
+	<p><button class="button-add-product" type="submit">Отправить</button></p>
 </form>
 
 {% endblock  %}

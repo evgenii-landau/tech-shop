@@ -1,10 +1,20 @@
+from django.db.models.base import Model as Model
+from django.db.models.query import QuerySet
 from .models import Product, Category
 from django.shortcuts import get_object_or_404, get_list_or_404
-from django.views.generic import TemplateView, ListView, DetailView
+from django.views.generic import (
+    TemplateView,
+    ListView,
+    DetailView,
+    CreateView,
+    UpdateView,
+    DetailView,
+)
 from .utils import DataMixin
 from django.db.models import Q
 from django.shortcuts import render, redirect
 from .forms import addProductForm
+from django.urls import reverse_lazy
 
 
 class TechHome(DataMixin, TemplateView):
@@ -50,27 +60,20 @@ class ShowProduct(DataMixin, DetailView):
         return get_object_or_404(Product, slug=self.kwargs.get(self.slug_url_kwarg))
 
 
-def addPage(request):
-    if request.method == "POST":
-        form = addProductForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect("myapp:home")
-    else:
-        form = addProductForm()
-
-    context = {"categories": Category.objects.all(), "form": form}
-
-    return render(request, "myapp/add_product.html", context=context)
+class addProduct(CreateView):
+    form_class = addProductForm
+    template_name = "myapp/add_product.html"
+    extra_context = {"categories": Category.objects.all()}
 
 
-# def addPage(request):
-# 	if request.method == "POST":
-# 		form = addProductForm(request.POST, request.FILES)
-# 		if form.is_valid():
-# 			form.save()
-# 			return redirect("home")
-# 	else:
-# 		form = addProductForm()
-# 	context = {"categories": Category.objects.all(), "form": form}
-# 	return render(request, "myapp/add_product.html", context=context)
+class UpdateProduct(UpdateView):
+    model = Product
+    fields = ["title", "description", "price", "cat"]
+    success_url = reverse_lazy("myapp:home")
+    template_name = "myapp/add_product.html"
+    extra_context = {"categories": Category.objects.all()}
+
+
+# class DeleteProduct(DetailView):
+#     model = Product
+#     success_url = reverse_lazy("myapp:home")

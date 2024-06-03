@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content-list %}
-<div class="products-item">
+<div class="product-item">
 	{% if item.image %}
 	<div class="wrapper-image">
 		<img class="product-image" src="{{ item.image.url }}" alt="iphone 14 pro max">
@@ -11,6 +11,9 @@
 		<h2 class="product-title">{{ item.title }}</h2>
 	</a>
 	<p class="product-price"><b>{{ item.price }}</b> $</p>
-	<p class="product-desc">{{ item.description|truncatechars:210 }}</p>
+	<p class="product-desc">{{ item.description }}</p>
+	<a href="{% url "myapp:updatePage" item.slug %}">
+		<button class="change-button" type="button">Изменить</button>
+	</a>
 </div>
 {% endblock  %}

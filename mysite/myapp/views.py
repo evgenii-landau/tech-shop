@@ -31,6 +31,7 @@ class TechCategory(DataMixin, ListView):
 
     template_name = "myapp/products.html"
     context_object_name = "items"
+    paginate_by = 2
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -88,5 +89,3 @@ class DeleteProduct(DeleteView):
 
     model = Product
     success_url = reverse_lazy("myapp:home")
-
-

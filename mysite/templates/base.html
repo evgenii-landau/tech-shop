@@ -41,18 +41,6 @@
 				</ul>
 			</div>
 		</div>
-
-		{% comment %} <nav class="nav-bar">
-			<ul class="nav-list">
-				{% for category in categories %}
-				<li>
-					<a class="nav-item" href="{{ category.get_absolute_url }}">
-						{{ category.title }}
-					</a>
-				</li>
-				{% endfor %}
-			</ul>
-		</nav> {% endcomment %}
 		
 		<div class="form-wrapper" method="get">
 			<form action="{% url "myapp:search" %}" class="search-form">
@@ -79,7 +67,8 @@
 </div>
 <div class="list-wrapper">
 	{% block content-list %}{% endblock %}
-	{% block content %}{% endblock %}
+	{% block navigation %}{% endblock  %}
+	{% comment %} {% block content %}{% endblock %} {% endcomment %}
 </div>
 </body>
 </html>

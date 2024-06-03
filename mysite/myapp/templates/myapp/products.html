@@ -19,3 +19,25 @@
 {% endfor %}
 </ul>
 {% endblock  %}
+
+{% block navigation %}
+{% if page_obj.has_other_pages %}
+<nav>
+	<ul class="list-pages">
+		{% if page_obj.has_previous %}
+		<a href="?page={{ page_obj.previous_page_number}}">Назад</a>
+		{% endif %}
+		{% for page in paginator.page_range %}
+		{% if page >= page_obj.number|add:-2 and page <= page_obj.number|add:2 %}
+		<li class="{% if page_obj.number == page %}page-num-active{% else %}page-num{% endif %}">
+			<a href="?page={{ page }}">{{ page }}</a>
+		</li>
+		{% endif %}
+		{% endfor %}
+		{% if page_obj.has_next %}
+		<a href="?page={{ page_obj.next_page_number}}">Вперед</a>
+		{% endif %}
+	</ul>
+</nav>
+{% endif %}
+{% endblock  %}

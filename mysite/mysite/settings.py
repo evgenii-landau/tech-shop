@@ -136,5 +136,5 @@ MEDIA_URL = "/media/"
 # Login redirect
 LOGIN_REDIRECT_URL = "myapp:home"
 
-# # Logout redirect
-# LOGOUT_REDIRECT_URL = "myapp:home"
+# Logout redirect
+LOGOUT_REDIRECT_URL = "myapp:home"

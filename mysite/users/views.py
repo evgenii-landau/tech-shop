@@ -12,11 +12,8 @@ from django.urls import reverse_lazy
 
 
 class LoginUser(LoginView):
+    """Вход пользователя"""
+
     form_class = LoginUserForm
     template_name = "users/login.html"
     extra_context = {"title": "Авторизация"}
-
-
-# def logout_user(request):
-#     logout(request)
-#     return HttpResponseRedirect(reverse("users:login"))

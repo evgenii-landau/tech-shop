@@ -57,9 +57,10 @@
 					</a>
 				</li>
 				<li>
-					<a class="nav-item" href="{% url "users:logout" %}">
-						Выйти
-					</a>
+					<form method="post" action="{% url "users:logout" %}">
+						{% csrf_token %}
+						<button type="submit">Logout</button>
+					</form>
 				</li>
 				<li>
 					<a class="nav-item" href="#">
